@@ -11,6 +11,17 @@
   --body-bg-clr: #222222;
   --title-font: "Bebas Neue", cursive;
   --body-font: "Poppins", sans-serif;
+
+  --font-size-sm: 1.4rem;
+  --font-size-md: 1.6rem;
+  --font-size-lg: 3.2rem;
+  --font-size-xl: 4.8rem;
+
+  --margin-bottom-sm: 1.6rem;
+  --margin-bottom-md: 2.4rem;
+  --margin-bottom-lg: 3.2rem;
+
+  --section-spacing: 4rem 0 2.5rem;
 }
 
 /*! === BASE === */
@@ -30,13 +41,18 @@ html {
 body {
   font-family: var(--body-font);
   font-size: 1.4rem;
-  line-height: 1.5;
+  line-height: 3.2rem;
   background-color: var(--body-bg-clr);
   color: var(--body-font-clr);
 }
 
 a {
   text-decoration: none;
+  color: var(--light-clr);
+}
+
+i{
+  font-size: 2.4rem;
 }
 
 ul {
@@ -46,7 +62,8 @@ ul {
 img,
 picture {
   display: block;
-  max-width: 100%;
+  height: auto;
+  max-width: 100%; /* 컨테이너를 넘기지 않겟다. */
 }
 
 input,
@@ -74,8 +91,96 @@ button {
 }
 
 /*! === COMPONENTS === */
+.container{
+  max-width: 144rem;
+  margin: 0 auto;
+  padding: 0 2.4rem;
+}
+
 
 /*! === HEADER === */
+.header{
+  position: absolute; /* 절대 위치니 만큼 화면의 변화와 관계없다. */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 4rem;
+}
+
+.logo-box{
+  min-width: 10.8rem; /* 작아져도 이 이상은 작아지지 않기로 하겠다. */
+}
+
+.menu{
+  position: fixed; /* absolute 랑 차이점을 잘 모르겠으니 알아보자 */
+  top: -100%; /* 오 이게 위로 아예 올려버려서 (fixed) 랑 같이. 그래서 display none 효과를 준다. */
+  left: 50%;
+  transform: translateX(-50%); /* left 와 translateX 이용하여 컨텐츠 중간 보내기 */
+  width: 80%;
+  background-color: var(--dark-clr);
+  padding: 5rem;
+  border-radius: .8rem;
+  z-index: 9999; /* 최상단에 위치하겠음 */
+  transition: .5s ease-in-out;
+}
+
+.menu,
+.nav-list{ /* 둘다 한꺼번에 처리하기 위함 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link{
+  letter-spacing: 1px; /* 글자 간격 (메뉴의) */
+}
+
+.menu-toggle-close{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.sm-screen-hidden{
+  display: none;
+}
+
+.menu-toggle-icon{
+  cursor: pointer;
+}
+
+/* menu javascript style */
+.menu.menu-opened{
+  top: 10rem;
+}
+
+.header::after{
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .95);
+  z-index: 1500;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity .5s;
+}
+
+.menu-opened.header::after{
+  opacity: 100;
+  transform: scale(100);
+}
+
 
 /*! === MAIN === */
 
