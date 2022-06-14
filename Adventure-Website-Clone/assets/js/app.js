@@ -7,7 +7,7 @@ const mobileMenu = document.querySelector('#mobile-menu');
 const headerOverlay = document.querySelector('#header');
 const grassImage = document.querySelector('#grassland');
 const skyImage = document.querySelector('#sky');
-const mountainsImage = document.querySelector('#mountains');
+const mountainsImage = document.querySelector('#mountain');
 const heroData = document.querySelector('#hero-data');
 
 openMenuIcon.addEventListener('click', () => {
@@ -23,12 +23,12 @@ closeMenuIcon.addEventListener('click', () => {
 window.addEventListener('scroll', () => {
     let scrollPosition = window.scrollY;
 
-    grassImage.style.transform = "translateY(" + scrollPosition * 0.02 + "%)";
-    mountainsImage.style.transform = "translateY(" + scrollPosition * 0.04 + "%)";
-    skyImage.style.transform = "translateY(" + scrollPosition * 0.01 + "%)";
+    grassImage.style.transform = "translateY(" + -scrollPosition * 0.02 + "%)";
+    mountainsImage.style.transform = "translateY(" + -scrollPosition * 0.04 + "%)";
+    skyImage.style.transform = "translateY(" + -scrollPosition * 0.01 + "%)";
     heroData.style.transform = "translateY(" + scrollPosition * 0.03 + "%)";
     heroData.style.opacity = 1 - scrollPosition * 0.002;
-})
+});
 // --- CLOSE MENU WHEN NAV-LINKS ARE CLICKED ---
 
 
